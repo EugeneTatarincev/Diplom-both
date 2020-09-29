@@ -2,5 +2,5 @@
   "port": 3001,
   "jwtSecret": "eugene tatarincev mern/pern",
   "mongoUri": "mongodb://localhost:27017/usersdb",
-  "baseUrl": "http://localhost:5000"
+  "baseUrl": "http://localhost:3001"
 }

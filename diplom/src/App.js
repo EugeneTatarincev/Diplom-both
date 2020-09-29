@@ -1,46 +1,27 @@
-import React, {Component} from 'react';
-import Navbar from './components/navbar/Navbar'
-import Menu from './components/menu/Menu'
-import WeatherIn from './components/weather/WeatherIn'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Greenhouse from './components/greengouse/Greenhouse';
-import Home from './components/home/Home';
-import Settings from './components/settings/Settings'
+import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {useRoutes} from './routes'
+import {useAuth} from './hooks/auth.hook'
+import {AuthContext} from './context/AuthContext'
+import {NavbarSecond} from './components/navbar-second/NavbarSecond'
+import 'materialize-css'
 
-class App extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      city: ''
-    }
-
-    this.onSelect = this.onSelect.bind(this)
-  }
-
-  onSelect = (event) => {
-    const { value } = event.target
-    this.setState({
-      city: value
-    })
-  }
-
-  render() {
-    return (
+function App () {
+  const {token, login, logout, userId, ready} = useAuth()
+  const isAuthenticated = !!token
+  const routes = useRoutes(isAuthenticated)
+  
+  return (
+    <AuthContext.Provider value={{ token, login, logout, userId, isAuthenticated }}>
       <Router>
-        <>
-          <Navbar />
-          <Menu />
-
-          <Route exact path='/' component={Home} />
-          <Route path='/greenhouse' component={Greenhouse} />
-          <Route path='/forecast' render={() => <WeatherIn city={this.state.city} />} />
-          <Route path='/settings' render={() => <Settings onSelect={this.onSelect} city={this.state.city} />} />
-          
-        </>
+        { !isAuthenticated && <NavbarSecond /> }
+        
+          {routes}
+        
       </Router>
-    )
-  }
+    </AuthContext.Provider>
+  )
+
 }
 
 export default App;

@@ -17,8 +17,8 @@ select {
   .select {
     position: absolute;
     display: flex;
-    width: 20em;
-    height: 3em;
+    width: 20em !important;
+    height: 3em !important;
     line-height: 3;
     background: #2c3e50;
     overflow: hidden;
