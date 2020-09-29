@@ -1,6 +1,6 @@
 export default class GreenService {
     async getResource() {
-        const url = `http://localhost:3001/data`
+        const url = `http://localhost:3001/greenhouse/data`
         const result = await fetch(url)
         
         if (!result.ok) {
