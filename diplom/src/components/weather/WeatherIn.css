@@ -1,0 +1,11 @@
+.weather {
+    display: inline-block;
+    width: 950px;
+    height: auto;
+    /* border: 2px solid #49E151; */
+    margin: 50px;
+    /* padding: 20px; */
+    margin-top: 70px;
+    margin-left: 400px;
+
+}
