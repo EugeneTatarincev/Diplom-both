@@ -39,61 +39,54 @@ export const AuthPage = () => {
   }
 
   return (
-    <div className="row">
-      <div className="col s6 offset-s3">
-        <h1>Войти</h1>
-        <div className="card blue darken-1">
-          <div className="card-content white-text">
-            <span className="card-title">Авторизация</span>
-            <div>
-
-              <div className="input-field">
-                <input
-                  placeholder="Введите email"
-                  id="email"
-                  type="text"
-                  name="email"
-                  className="yellow-input"
-                  value={form.email}
-                  onChange={changeHandler}
-                />
-                <label htmlFor="email">Email</label>
-              </div>
-
-              <div className="input-field">
-                <input
-                  placeholder="Введите пароль"
-                  id="password"
-                  type="password"
-                  name="password"
-                  className="yellow-input"
-                  value={form.password}
-                  onChange={changeHandler}
-                />
-                <label htmlFor="email">Пароль</label>
-              </div>
-
-            </div>
-          </div>
-          <div className="card-action">
-            <button
-              className="btn yellow darken-4"
-              style={{marginRight: 10}}
-              disabled={loading}
-              onClick={loginHandler}
-            >
-              Войти
-            </button>
-            <button
-              className="btn grey lighten-1 black-text"
-              onClick={registerHandler}
-              disabled={loading}
-            >
-              Регистрация
-            </button>
-          </div>
-        </div>
+  
+    <div className="container reg-form">
+      
+      <div className="container text-center">
+        <span className="card-title">Авторизация</span>
       </div>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            placeholder="Введите email"
+            id="email"
+            type="text"
+            name="email"
+            className="form-control"
+            value={form.email}
+            onChange={changeHandler}
+          />
+        
+          <label htmlFor="email">Пароль</label>
+          <input
+            placeholder="Введите пароль"
+            id="password"
+            type="password"
+            name="password"
+            className="form-control"
+            value={form.password}
+            onChange={changeHandler}
+          />
+        </div>
+
+        <div className="container text-center">
+          <button
+            className="btn btn-warning btn-reg"
+            style={{marginRight: 10}}
+            disabled={loading}
+            onClick={loginHandler}
+          >
+            Войти
+          </button>
+          <button
+            className="btn btn-outline-warning"
+            onClick={registerHandler}
+            disabled={loading}
+          >
+            Регистрация
+          </button>
+        </div>
     </div>
+    
   )
 }

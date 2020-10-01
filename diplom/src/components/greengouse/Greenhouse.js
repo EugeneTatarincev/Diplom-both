@@ -27,7 +27,7 @@ export default class Greenhouse extends Component {
     }
 
     render() {
-        let {data, loading, error} = this.state
+        let {data, loading, error, text} = this.state
         const spinner = loading ? <Loader/> : null
         const errorMessage = error ? <Error /> : null
         return (

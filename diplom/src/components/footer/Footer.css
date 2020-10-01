@@ -1,0 +1,11 @@
+footer {
+    width: 100%;
+    height: 250px;
+    color: lightgray;
+    background: black;
+    padding: 20px;
+}
+
+.mail-list {
+    list-style-type: none;
+}
