@@ -4,6 +4,7 @@ const config = require('config')
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
+const SqlHandler = require('../sqlHandler')
 const router = Router()
 
 
@@ -28,16 +29,20 @@ router.post(
 
     const {email, password} = req.body
 
-    const candidate = await User.findOne({ email })
+    const sql = new SqlHandler()
 
-    if (candidate) {
+    const candidate = await sql.getDataByMail(email)
+    const user = candidate[0]
+
+    console.log(user)
+
+    if (user) {
       return res.status(400).json({ message: 'Такой пользователь уже существует' })
     }
 
     const hashedPassword = await bcrypt.hash(password, 12)
-    const user = new User({ email, password: hashedPassword })
-
-    await user.save()
+    
+    await sql.setData('users', [email, hashedPassword], ['mail', 'password'])
 
     res.status(201).json({ message: 'Пользователь создан' })
 
@@ -66,7 +71,11 @@ router.post(
 
     const {email, password} = req.body
 
-    const user = await User.findOne({ email })
+    const sql = new SqlHandler()
+
+    const userArr = await sql.getDataByMail(email)
+    const user = userArr[0]
+    console.log(user)
 
     if (!user) {
       return res.status(400).json({ message: 'Пользователь не найден' })
@@ -84,7 +93,7 @@ router.post(
       { expiresIn: '1h' }
     )
 
-    res.json({ token, userId: user.id })
+    res.json({ token, userId: user.id, userName: email })
 
   } catch (e) {
     res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

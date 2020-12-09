@@ -1,0 +1,11 @@
+.greenhouse {
+    /* position: relative; */
+}
+
+.greenhouse img {
+    width: 800px;
+    height: 800px;
+    margin-left: 500px;
+    margin-top: -50px;
+    /* position: relative; */
+}

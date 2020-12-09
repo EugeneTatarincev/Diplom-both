@@ -9,3 +9,9 @@ citys = {
 const {lat, lon} = citys[city]
 
 console.log(lat, lon)
+
+let aru = function () {
+    console.log(citys)
+}
+
+aru()

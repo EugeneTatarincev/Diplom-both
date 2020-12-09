@@ -3,9 +3,11 @@ import {Navbar} from '../components/navbar/Navbar'
 import Menu from '../components/menu/Menu'
 import WeatherIn from '../components/weather/WeatherIn'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Greenhouse from '../components/greengouse/Greenhouse';
-import Home from '../components/home/Home';
+import Greenhouse from '../components/greengouse/Greenhouse'
+import Home from '../components/home/Home'
 import Settings from '../components/settings/Settings'
+import Sensors from '../components/sensors/Sensors'
+import {UserAccount} from '../components/userAccount/UserAccount'
 import 'materialize-css'
 
 class Main extends Component {
@@ -13,7 +15,7 @@ class Main extends Component {
     super()
 
     this.state = {
-      city: ''
+      city: 'Moscow'
     }
 
     this.onSelect = this.onSelect.bind(this)
@@ -37,7 +39,8 @@ class Main extends Component {
           <Route path='/greenhouse' component={Greenhouse} />
           <Route path='/forecast' render={() => <WeatherIn city={this.state.city} />} />
           <Route path='/settings' render={() => <Settings onSelect={this.onSelect} city={this.state.city} />} />
-          
+          <Route path='/sensors' component={Sensors} />
+          <Route path='/userAccount' component={UserAccount} />
         </>
       </Router>
     )

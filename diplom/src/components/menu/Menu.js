@@ -14,6 +14,9 @@ export default function Menu() {
             <li>
                 <Link className='butn-1' to='/settings'> Settings </Link>
             </li>
+            <li>
+                <Link className='butn-1' to='/sensors'> Sensors </Link>
+            </li>
         </ul>
     )
 }

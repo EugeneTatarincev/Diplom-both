@@ -1,0 +1,28 @@
+.sensors-table {
+    margin: 20px 0 0 700px ;
+}
+
+.sensors-table table {
+    width: 500px;
+    background: gray;
+    text-align: center;
+    border : 2px solid gray;
+}
+
+.sensors-table table thead {
+    color: white;
+}
+
+.sensors-table table tbody tr td {
+    background: white;
+    padding: 10px;
+    border: 2px solid gray;
+}
+
+#block-name {
+    margin: 100px 0 0 700px ;
+}
+
+.frbtn {
+    margin: 0 0 0 600px;
+}

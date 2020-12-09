@@ -1,18 +1,7 @@
 
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: lightgray;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  outline: none !important;
+  border: none;
 }
 
 a {
@@ -27,29 +16,6 @@ a {
 .nav li {
   margin-right: 50px;
 }
-/*
-.navbar ul{
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  
-}
-
-.navbar li {
-  list-style-type: none;
-  margin-right: 30px;
-}
-
-.navbar li a {
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
-  transition: 1s;
-}
-
-.navbar li a:hover {
-  color: black;
-} */
 
 /* MENU */
 
@@ -76,12 +42,49 @@ a {
 
 /* REG AND LOG STUFF */
 
+.back-img {
+  width: 100vw;
+  height: 100vh;
+}
+
+.reg-form span {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 49px;  
+  color: #0066FF;
+  margin-top: 30px;
+  display: inline-block;
+  margin-bottom: 0px;
+}
+
 .reg-form {
-  background: #4A90E2;
-  margin-top: 100px;
+  background: #FFFFFF;
   padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
+  border-radius: 5px;
+  max-width: 832px;
+  height: 500px;
+  position: absolute;
+  top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.form-group input {
+  height: 60px;
+  width: 710px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #e5f0ff;
+  padding-left: 30px;
+  font-size: 20px;
+}
+
+.form-group input::placeholder {
+  color: #75acff;
 }
 
 .container h1 {
@@ -90,10 +93,34 @@ a {
 
 .form-group label {
   margin-top: 10px;
+  color: #0066FF !important;
+  margin-left: 45px;
+  margin-top: 18px;
+  margin-bottom: 5px;
+  font-size: 25px;
 }
 
 .btn-reg {
-  margin-right: 30px !important; 
+  width: 180px;
+  height: 55px;
+  border-radius: 5px;
+  background: #0066FF;
+  color: #00D1FF;
+  border: 2px solid #0066FF;
+  margin-top: 30px;
+  font-size: 25px;
+}
+
+.btn-reg:first-child {
+  margin-right: 100px !important;
+}
+
+.btn-reg:last-child {
+  background: white;
+}
+
+.btn-reg:hover {
+  box-shadow: 0 0 3pt 2pt #00D1FF;
 }
 
 /* TOAST */
@@ -124,4 +151,5 @@ a {
   height: 500px;
 } */
 /* @import "~materialize-css/dist/css/materialize.min.css"; */
-@import '~bootstrap/dist/css/bootstrap.min.css'
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');

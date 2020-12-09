@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import WeatherComp from '../weather-comp/WeatherComp'
 import Loader from '../loader/Loader'
 import Error from '../error/Error'
+import WeatherGraph from '../weather-comp/WeatherGraph'
 import weatherService from '../../services/weatherService'
 
 
@@ -14,11 +15,39 @@ export default class WeatherIn extends Component{
         loading: true,
         error: false
     }
+    data = [
+        {name: 'Page', uv: 4000},
+        {name: 'Page', uv: 3000},
+        {name: 'Page', uv: 2000},
+        {name: 'Page', uv: 2700},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 1800},
+        {name: 'Page', uv: 3400}
+    ]
     
 
     updateWeather() {
         this.weatherObj.getWeather(this.props.city)
-            .then(res => this.setState({items: res, loading: false })) 
+            .then(res => {
+                this.setState({items: res, loading: false })
+                console.log(res)
+            }) 
             .catch(err => this.setState({ loading: false,error: true }))     
     }
 
@@ -35,6 +64,7 @@ export default class WeatherIn extends Component{
                 {errorMessage}
                 {spinner}
                 {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
+                <WeatherGraph data={this.data} />
             </div>
         )
     } 

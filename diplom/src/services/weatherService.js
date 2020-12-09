@@ -3,8 +3,8 @@ import {citys, id} from '../api-config/apiConfig.json'
 export default class weatherService {
 
     async getResource(lat, lon) {
-        // const { lat, lon } = this.citys.Moscow
-        const seven = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly&appid=${id}`
+        
+        const seven = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${id}`
         const result = await fetch(seven)
         
         if (!result.ok) {
@@ -15,9 +15,13 @@ export default class weatherService {
         return await result.json()
     }
 
-    async getWeather (city='Moscow') {
+    async getWeather (city) {
         const {lat, lon} = citys[city]
         const res = await this.getResource(lat, lon)
+        res.hourly.forEach(item => {
+            let date = new Date (item.dt * 1000)
+            console.log(date.getDate() + ' ' + date.getHours())
+        })
         return res.daily.map(item => { return { data: item.dt, temp: this._transformWeather(item.temp)} })
     }    
 

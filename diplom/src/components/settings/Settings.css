@@ -52,3 +52,18 @@ select {
  .select:hover::after {
     color: #4A90E2;
   }
+
+
+.settings label {
+  display: block;
+}
+
+.block-set {
+  position: absolute;
+  bottom: 300px;
+  right: 430px;
+}
+
+.block-id {
+  width: 400px;
+}

@@ -3,6 +3,7 @@ import GreenService from '../../services/greenService'
 import GreenComp from '../gree-comp/GreenComp'
 import Loader from '../loader/Loader'
 import Error from '../error/Error'
+import './Greenhouse.css'
 
 export default class Greenhouse extends Component {
     greenObj = new GreenService()
@@ -27,14 +28,17 @@ export default class Greenhouse extends Component {
     }
 
     render() {
-        let {data, loading, error, text} = this.state
+        let {data, loading, error} = this.state
         const spinner = loading ? <Loader/> : null
         const errorMessage = error ? <Error /> : null
         return (
-            <div className="weather">
+            <div className="greenhouse">
                 {errorMessage}
                 {spinner}
-                {data.map((item, i) => <GreenComp key={i} temp={item.temp} press={item.press}/>)}
+                <img src="greenForData.jpg"/>
+                {/* {data.map((item, i) => <GreenComp key={i} temp={item.temp} press={item.press}/>)} */}
+                <GreenComp data='20' text="Температура" buttonId ="first"/>
+                <GreenComp data='10' text="Давление" buttonId ="second"/>
             </div>
         )
     }

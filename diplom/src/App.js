@@ -3,18 +3,16 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {useRoutes} from './routes'
 import {useAuth} from './hooks/auth.hook'
 import {AuthContext} from './context/AuthContext'
-import {NavbarSecond} from './components/navbar-second/NavbarSecond'
 import 'materialize-css'
 
 function App () {
-  const {token, login, logout, userId, ready} = useAuth()
+  const {token, login, logout, userId, userName} = useAuth()
   const isAuthenticated = !!token
   const routes = useRoutes(isAuthenticated)
   
   return (
-    <AuthContext.Provider value={{ token, login, logout, userId, isAuthenticated }}>
+    <AuthContext.Provider value={{ token, login, logout, userId, userName, isAuthenticated }}>
       <Router>
-        { !isAuthenticated && <NavbarSecond /> }
         
           {routes}
         
