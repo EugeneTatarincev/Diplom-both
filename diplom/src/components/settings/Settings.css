@@ -17,10 +17,10 @@ select {
   .select {
     position: relative;
     display: flex;
-    width: 20em !important;
+    width: 25em !important;
     height: 3em !important;
-    line-height: 3;
-    background: #2c3e50;
+    line-height: 2;
+    background: #4A90E2;
     overflow: hidden;
     border-radius: .25em;
     top: 0;
@@ -38,10 +38,10 @@ select {
   .select::after {
     content: '\25BC';
     position: absolute;
-    top: 0;
+    top: 6px;
     right: 0;
     padding: 0 1em;
-    background: #34495e;
+    background: #4A90E2;
     cursor: pointer;
     pointer-events: none;
     -webkit-transition: .25s all ease;
@@ -76,4 +76,10 @@ select {
 .settings {
   margin-left: auto;
   margin-right: auto;
+}
+
+.settings input {
+  width: 400px;
+  height: 45px;
+  border-color: #00D1FF;
 }
