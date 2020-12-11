@@ -15,7 +15,7 @@ select {
   }
   /* Custom Select */
   .select {
-    position: absolute;
+    position: relative;
     display: flex;
     width: 20em !important;
     height: 3em !important;
@@ -23,8 +23,8 @@ select {
     background: #2c3e50;
     overflow: hidden;
     border-radius: .25em;
-    margin-left: 700px;
-    margin-top: 200px;
+    top: 0;
+    right: 0;
   }
 
   select {
@@ -56,14 +56,24 @@ select {
 
 .settings label {
   display: block;
+  color: #00D1FF;
+  font-style: normal;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+  margin-bottom: 0px;
 }
 
-.block-set {
-  position: absolute;
-  bottom: 300px;
-  right: 430px;
+.settings label:last-child {
+  margin-top: 120px;
 }
+
 
 .block-id {
   width: 400px;
+}
+
+.settings {
+  margin-left: auto;
+  margin-right: auto;
 }

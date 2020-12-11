@@ -7,10 +7,10 @@ export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Switch>
-        <Route path="/main" exact>
+        <Route path="/greenhouse" exact>
           <Main />
         </Route>
-        <Redirect to="/main" />
+        <Redirect to="/greenhouse" />
       </Switch>
     )
   }

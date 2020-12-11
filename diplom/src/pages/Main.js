@@ -35,12 +35,14 @@ class Main extends Component {
           <Navbar />
           <Menu />
 
-          <Route exact path='/' component={Home} />
-          <Route path='/greenhouse' component={Greenhouse} />
-          <Route path='/forecast' render={() => <WeatherIn city={this.state.city} />} />
-          <Route path='/settings' render={() => <Settings onSelect={this.onSelect} city={this.state.city} />} />
-          <Route path='/sensors' component={Sensors} />
-          <Route path='/userAccount' component={UserAccount} />
+          <div className='pages-content'>
+            <Route exact path='/' component={Home} />
+            <Route path='/greenhouse' component={Greenhouse} />
+            <Route path='/forecast' render={() => <WeatherIn city={this.state.city} />} />
+            <Route path='/settings' render={() => <Settings onSelect={this.onSelect} city={this.state.city} />} />
+            <Route path='/sensors' component={Sensors} />
+            <Route path='/userAccount' component={UserAccount} />
+          </div>
         </>
       </Router>
     )

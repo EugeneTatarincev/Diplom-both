@@ -24,7 +24,8 @@ export default function Settings ({onSelect, city}) {
 
     return (
         <div className="settings">
-            <div className="select">
+            <label htmlFor="city-select"> Выберите город </label>
+            <div className="select" name='city-select'>
                 <select onChange={onSelect} value={city}> 
                     <option value="">Выберите город</option>
                     <option value="Moscow">Москва</option>

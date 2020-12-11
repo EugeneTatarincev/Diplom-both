@@ -1,26 +1,31 @@
 import React, {useContext} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useHistory} from 'react-router-dom'
 import {AuthContext} from '../../context/AuthContext'
+import './Navbar.scss'
 
 export const Navbar = () => {
-  const {userName} = useContext(AuthContext)
+  const history = useHistory()
+  const {logout, userName} = useContext(AuthContext)
 
-  // const logoutHandler = event => {
-  //   event.preventDefault()
-  //   logout()
-  // }
+  const logoutHandler = event => {
+    event.preventDefault()
+    logout()
+    history.push('/')
+  }
 
   return (
     <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
             <div className="navbar-header">
-                <NavLink className="navbar-brand" to="/greenhouse">LOGO</NavLink>
+                <NavLink className="navbar-brand" to="/greenhouse"> LOGO </NavLink>
             </div>
             <ul className="nav navbar-nav navbar-right">
                 <li>
                   <NavLink to='/userAccount'> s {userName} </NavLink>
                 </li>
-                {/* <li><a href="/" onClick={logoutHandler}><span className="glyphicon glyphicon-log-in"></span> Выход {userName} </a></li> */}
+                <li>
+                  <a href="/" onClick={logoutHandler}><span className="glyphicon glyphicon-log-in"></span> Выход </a>
+                </li>
             </ul>
         </div>
     </nav>

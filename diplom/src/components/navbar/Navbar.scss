@@ -1,0 +1,22 @@
+
+.navbar {
+    background: linear-gradient(90deg, #0066FF 42.71%, #00D1FF 100%);
+    padding: 15px;
+
+    li {
+        margin-right: 50px;
+    }
+
+    a {
+        font-size: 20px;
+        font-weight: 1000;
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+        transition: 0.3s;
+
+        &:hover {
+            color: #0066FF;
+        }
+    }
+}
+  

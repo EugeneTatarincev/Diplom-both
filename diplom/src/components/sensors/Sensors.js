@@ -58,7 +58,6 @@ export default function Sensors() {
                 {blocks.map(({id_cb}) => <option value={ id_cb }> { id_cb } </option> )}
             </select>
         </div>
-            <button className="btn btn-outline-info frbtn" > Ok </button>
         <div className='sensors-table'>
             <table>
                 <thead>
