@@ -131,6 +131,12 @@ body {
   margin: auto;
 }
 
+/* MAIN FLEX */
+
+.main-flex {
+  display: flex;
+}
+
 /* .card-img-top {
   width:800px;
   height: 500px;
