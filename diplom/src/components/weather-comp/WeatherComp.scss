@@ -1,0 +1,58 @@
+$data-color: #0066ff;
+$main-font: 'Open Sans', sans-serif;
+$secondary-color: #00D1FF;
+
+.weather-comp {
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 1000px;
+    background: white;
+    padding-top: 0px !important;
+
+    span {
+        margin: 0px;
+        padding: 0px;
+    }
+    
+}
+
+.weather-data {
+    color: $data-color;
+    font-size: 24px;
+    font-weight: normal;
+    font-family: $main-font;
+}
+
+.weather-label {
+    color: $secondary-color;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.weather-date {
+    color: $secondary-color;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.weather-day {
+    color: $secondary-color;
+    font-family: $main-font;
+    font-size: 24px;
+}
+
+.weather-block {
+    display: inline-block;
+    width: 50px;
+    margin-left: 120px;
+    text-align: right;
+
+    &:first-child {
+        margin-left: 50px;
+        margin-right: 200px;
+        text-align: left;
+    }
+}
+
+

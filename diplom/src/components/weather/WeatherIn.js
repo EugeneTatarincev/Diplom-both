@@ -64,7 +64,6 @@ export default class WeatherIn extends Component{
                 {errorMessage}
                 {spinner}
                 {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
-                <WeatherGraph data={this.data} />
             </div>
         )
     } 

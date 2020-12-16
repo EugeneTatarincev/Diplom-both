@@ -129,6 +129,7 @@ body {
   display: inline-block;
   vertical-align: top;
   margin: auto;
+  position: relative;
 }
 
 /* MAIN FLEX */

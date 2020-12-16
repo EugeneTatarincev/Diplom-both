@@ -21,7 +21,7 @@ export const Navbar = () => {
             </div>
             <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <NavLink to='/userAccount'> s {userName} </NavLink>
+                  <NavLink to='/userAccount'> {userName} </NavLink>
                 </li>
                 <li>
                   <a href="/" onClick={logoutHandler}><span className="glyphicon glyphicon-log-in"></span> Выход </a>

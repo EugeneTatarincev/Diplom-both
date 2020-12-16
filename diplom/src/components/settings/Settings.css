@@ -17,7 +17,7 @@ select {
   .select {
     position: relative;
     display: flex;
-    width: 25em !important;
+    width: 400px !important;
     height: 3em !important;
     line-height: 2;
     background: #4A90E2;
