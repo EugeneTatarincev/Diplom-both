@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {Navbar} from '../components/navbar/Navbar'
 import Menu from '../components/menu/Menu'
 import WeatherIn from '../components/weather/WeatherIn'
@@ -10,46 +10,36 @@ import Sensors from '../components/sensors/Sensors'
 import {UserAccount} from '../components/userAccount/UserAccount'
 import 'materialize-css'
 
-class Main extends Component {
-  constructor() {
-    super()
+function Main () {
+  const [city, setCity] = useState('Moscow')
 
-    this.state = {
-      city: 'Moscow'
-    }
-
-    this.onSelect = this.onSelect.bind(this)
-  }
-
-  onSelect = (event) => {
+  const onSelectSettings = (event) => {
     const { value } = event.target
-    this.setState({
-      city: value
-    })
+    setCity(value)
   }
 
-  render() {
-    return (
-      <Router>
-        <>
-          <Navbar />
+  
+  return (
+    <Router>
+      <>
+        <Navbar />
 
-          <div className="main-flex">
-            <Menu />
+        <div className="main-flex">
+          <Menu />
 
-            <div className='pages-content'>
-              <Route exact path='/' component={Home} />
-              <Route path='/greenhouse' component={Greenhouse} />
-              <Route path='/forecast' render={() => <WeatherIn city={this.state.city} />} />
-              <Route path='/settings' render={() => <Settings onSelect={this.onSelect} city={this.state.city} />} />
-              <Route path='/sensors' component={Sensors} />
-              <Route path='/userAccount' component={UserAccount} />
-            </div>
+          <div className='pages-content'>
+            <Route exact path='/' component={Home} />
+            <Route path='/greenhouse' component={Greenhouse} />
+            <Route path='/forecast' render={() => <WeatherIn city={city} />} />
+            <Route path='/settings' render={() => <Settings onSelect={onSelectSettings} city={city} />} />
+            <Route path='/sensors' component={Sensors} />
+            <Route path='/userAccount' component={UserAccount} />
           </div>
-        </>
-      </Router>
-    )
-  }
+        </div>
+      </>
+    </Router>
+  )
+  
 }
 
 export default Main;

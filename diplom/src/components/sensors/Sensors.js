@@ -31,6 +31,7 @@ export default function Sensors() {
             console.log(fetched)
             setData(fetched)
             setBlock(value)
+            console.log(value)
         }
         catch (e) {}
     },[token, request])
