@@ -17,7 +17,7 @@ function Main () {
   const {token} = useContext(AuthContext)
   const [city, setCity] = useState('Moscow')
   const [data, setData] = useState([])
-  const [block, setBlock] = useState('Выберите блок')
+  const [block, setBlock] = useState('')
 
   const onSelectSettings = (event) => {
     const { value } = event.target
@@ -31,7 +31,7 @@ function Main () {
             Authorization: `Bearer ${token}`
         })
         console.log(fetched)
-        setData(fetched)
+        setData([...data, ...fetched])
         setBlock(value)
     }
     catch (e) {}
@@ -48,7 +48,7 @@ function Main () {
 
           <div className='pages-content'>
             <Route exact path='/' component={Home} />
-            <Route path='/greenhouse' component={Greenhouse} />
+            <Route path='/greenhouse' component={() => <Greenhouse data={data} /> } />
             <Route path='/forecast' render={() => <WeatherIn city={city} />} />
             <Route path='/settings' render={() => <Settings onSelect={onSelectSettings} city={city} />} />
             <Route path='/sensors' component={() => <Sensors onSelect={onSelectSensors} data={data} block={block} /> } />

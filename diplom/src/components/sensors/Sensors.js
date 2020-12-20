@@ -5,9 +5,7 @@ import {useHttp} from '../../hooks/http.hook'
 import './Sensors.css'
 
 export default function Sensors({onSelect, data, block}) {
-    // const [data, setData] = useState([])
     const [blocks, setBlocks] = useState([])
-    // const [block, setBlock] = useState('')
     const {request} = useHttp()
     const {token} = useContext(AuthContext)
 
@@ -21,20 +19,6 @@ export default function Sensors({onSelect, data, block}) {
         }
         catch (e) {}
     },[token, request])
-
-    // const onSelect = useCallback(async (event) => {
-    //     try{
-    //         const {value} = event.target
-    //         const fetched = await request('http://localhost:3001/api/data', 'POST', {data: value}, {
-    //             Authorization: `Bearer ${token}`
-    //         })
-    //         console.log(fetched)
-    //         setData(fetched)
-    //         setBlock(value)
-    //         console.log(value)
-    //     }
-    //     catch (e) {}
-    // },[token, request])
 
     useEffect(() => {
         fetchBlocks()

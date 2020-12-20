@@ -31,27 +31,27 @@
     }   
 }
 
-#item-one {
+#item-0 {
     @include where(60px, 250px);
 }
 
-#item-two {
+#item-1 {
     @include where(60px + 180px, 250px);
 }
 
-#item-three {
+#item-2 {
     @include where(60px + 180px + 180px, 250px);
 }
 
-#item-four {
+#item-3 {
     @include where(60px, 250px + 350px);
 }
 
-#item-five {
+#item-4 {
     @include where(60px + 180px, 250px + 350px);
 }
 
-#item-six {
+#item-5 {
     @include where(60px + 180px + 180px, 250px + 350px);
 }
 
