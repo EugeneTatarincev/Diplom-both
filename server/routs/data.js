@@ -68,4 +68,33 @@ router.get('/block', auth, async (req, res) => {
   }
 })
 
+router.post('/change', auth, async (req, res) => {
+  try {
+    const sql = new SqlHandler()
+
+    const {data} = req.body
+    console.log(data)
+
+    const {block, dataIn} = data
+
+    // ВАЛИДАЦИЯ НА ПУСТЫЕ БЛОКИ
+
+    if (block === '') {
+      res.status(500).json({message: "Укажите блок"})
+    }
+
+    if (dataIn === '') {
+      res.status(500).json({message: "Введите корректные данные"})
+    }
+
+    // ВАЛИДАЦИЯ НА ГРАНИЧНЫЕ ЗНАЧЕНИЯ
+
+    // ОТПРАВКА В ТАБЛИЦУ ВМЕСТЕ С ТЕКУЩИМ ВРЕМЕНЕМ ОТПРАВКИ
+
+    res.json(data)
+  } catch (e) {
+    res.status(500).json({ message: e.message })
+  }
+})
+
 module.exports = router

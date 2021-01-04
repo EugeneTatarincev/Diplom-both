@@ -15,7 +15,7 @@ export default function WeatherGraph ({ data }) {
             <Tooltip />
             <Legend />
             <Line type="monotone" dataKey="uv" stroke="#ff7300" activeDot={{r: 8}} />
-            {/* <Line type="monotone" dataKey="pv" stroke="#387908" /> */}
+            <Line type="monotone" dataKey="pv" stroke="#387908" />
         </LineChart>
     )
 }

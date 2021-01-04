@@ -1,0 +1,76 @@
+$main-color: #0066FF;
+
+.m-overlay {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: -420px;
+    right: -420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.m-window {
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    div {
+        margin-top: 20px;
+    }
+
+    h2 {
+        color: $main-color;
+        margin-bottom: 30px;
+    }
+
+    label {
+        color: $main-color;
+        font-size: 25px;
+        font-weight: 600;
+        display: block;
+    }
+
+    button {
+        background: $main-color;
+        color: white;
+        padding: 7px;
+        border-radius: 5px;
+    }
+
+    input {
+        border: 2px solid $main-color;
+        border-radius: 5px;
+        padding: 5px;
+        margin-right: 10px;
+        margin-left: 10px;
+        outline: none;
+    }
+}
+
+#cross {
+    position: absolute;
+    top: 0;
+    right: -40px;
+    font-size: 30px;
+    line-height: 20px;
+    padding-bottom: 13px;
+}
+
+.modal-seen {
+    display: flex;
+}
+
+.m-error {
+    color: red;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}

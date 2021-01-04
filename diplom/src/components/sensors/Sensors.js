@@ -29,7 +29,7 @@ export default function Sensors({onSelect, data, block}) {
             <div className="select">
                 <select onChange={onSelect} value={block}> 
                     <option value="" disabled>Выберите блок</option>
-                    {blocks.map(({id_cb}) => <option value={ id_cb }> { id_cb } </option> )}
+                    {blocks.map(({id_cb}) => <option value={ id_cb } key={id_cb}> { id_cb } </option> )}
                 </select>
             </div>
 
@@ -43,7 +43,7 @@ export default function Sensors({onSelect, data, block}) {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(item => <SensItem name={item.name} type={item.type} data={item.data} />)}
+                        {data.map(item => <SensItem name={item.name} type={item.type} data={item.data} key={item.type} />)}
                     </tbody>
                 </table>
             </div>

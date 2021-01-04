@@ -83,3 +83,14 @@ select {
   background: white;
   color: #0066FF;
 }
+
+.m-toggle {
+  width: 400px;
+  background: #4a90e2;
+  color: white;
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}

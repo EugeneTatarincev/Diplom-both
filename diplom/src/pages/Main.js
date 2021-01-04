@@ -50,7 +50,7 @@ function Main () {
             <Route exact path='/' component={Home} />
             <Route path='/greenhouse' component={() => <Greenhouse data={data} /> } />
             <Route path='/forecast' render={() => <WeatherIn city={city} />} />
-            <Route path='/settings' render={() => <Settings onSelect={onSelectSettings} city={city} />} />
+            <Route path='/settings' render={() => <Settings onSelect={onSelectSettings} city={city} block={block} />} />
             <Route path='/sensors' component={() => <Sensors onSelect={onSelectSensors} data={data} block={block} /> } />
             <Route path='/userAccount' component={() => <UserAccount block={block} /> } />
           </div>

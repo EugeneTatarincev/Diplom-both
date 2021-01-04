@@ -16,29 +16,29 @@ export default class WeatherIn extends Component{
         error: false
     }
     data = [
-        {name: 'Page', uv: 4000},
-        {name: 'Page', uv: 3000},
-        {name: 'Page', uv: 2000},
-        {name: 'Page', uv: 2700},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 1800},
-        {name: 'Page', uv: 3400}
+        {name: 'Page', uv: 4000, pv: 2000},
+        {name: 'Page', uv: 3000, pv: 2000},
+        {name: 'Page', uv: 2000, pv: 2000},
+        {name: 'Page', uv: 2700, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 1800, pv: 2000},
+        {name: 'Page', uv: 3400, pv: 2000}
     ]
     
 
@@ -64,6 +64,7 @@ export default class WeatherIn extends Component{
                 {errorMessage}
                 {spinner}
                 {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
+                <WeatherGraph data={this.data}/>
             </div>
         )
     } 
