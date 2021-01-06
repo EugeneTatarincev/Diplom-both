@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import WeatherComp from '../weather-comp/WeatherComp'
 import Loader from '../loader/Loader'
 import Error from '../error/Error'
@@ -13,39 +13,25 @@ export default class WeatherIn extends Component{
     state = { 
         items: [],
         loading: true,
-        error: false
+        error: false,
+        width: ''
     }
-    data = [
-        {name: 'Page', uv: 4000, pv: 2000},
-        {name: 'Page', uv: 3000, pv: 2000},
-        {name: 'Page', uv: 2000, pv: 2000},
-        {name: 'Page', uv: 2700, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 1800, pv: 2000},
-        {name: 'Page', uv: 3400, pv: 2000}
-    ]
+
+
+    // Просто для примера как выглядит погодный график
+    // data = [
+    //     {name: '1', mor: 4000, day: 2000},
+    //     {name: '2', mor: 3000, day: 2000},
+    //     {name: '3', mor: 2000, day: 2000},
+    //     {name: '4', mor: 2700, day: 2000},
+    //     {name: '5', mor: 1800, day: 2000},
+    // ]
     
 
     updateWeather() {
         this.weatherObj.getWeather(this.props.city)
             .then(res => {
-                this.setState({items: res, loading: false })
+                this.setState({items: res, loading: false, width: window.innerWidth })
                 console.log(res)
             }) 
             .catch(err => this.setState({ loading: false,error: true }))     
@@ -56,15 +42,16 @@ export default class WeatherIn extends Component{
     }
 
     render () {
-        const {items, loading, error} = this.state
+        const {items, loading, error, width} = this.state
         const spinner = loading ? <Loader/> : null
         const errorMessage = error ? <Error /> : null
         return (
             <div className="weather">
                 {errorMessage}
                 {spinner}
-                {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
-                <WeatherGraph data={this.data}/>
+                {width > 1000 ? !spinner && <WeatherGraph data={items}/> : items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
+                {/* {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
+                {!spinner && <WeatherGraph data={items}/>} */}
             </div>
         )
     } 

@@ -27,9 +27,9 @@ export default class weatherService {
 
     _transformWeather ({morn, day, night}) {
         return {
-            morn,
-            day,
-            night
+            утро: morn,
+            день: day,
+            ночь: night
         }
     }
 }

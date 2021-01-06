@@ -2,7 +2,7 @@ import React from 'react'
 import {months} from './Months'
 import './WeatherComp.scss'
 
-export default function WeatherComp ({temp : {morn, day, night}, data}) {
+export default function WeatherComp ({temp : {утро, день, ночь}, data}) {
 
     let date = new Date (data * 1000)
     return (
@@ -15,17 +15,17 @@ export default function WeatherComp ({temp : {morn, day, night}, data}) {
 
             <div className="weather-block">
                 <span className="weather-label"> утро </span>
-                <span className="weather-data"> {morn} </span> 
+                <span className="weather-data"> {утро} </span> 
             </div>
         
             <div className="weather-block">
                 <span className="weather-label"> день </span>
-                <span className="weather-data"> {day} </span> 
+                <span className="weather-data"> {день} </span> 
             </div>
 
             <div className="weather-block">
                 <span className="weather-label"> ночь </span>
-                <span className="weather-data"> {night} </span>
+                <span className="weather-data"> {ночь} </span>
             </div>
         </div>
     )
