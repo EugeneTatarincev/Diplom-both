@@ -8,14 +8,15 @@ import weatherService from '../../services/weatherService'
 
 import './WeatherIn.css'
 
-export default class WeatherIn extends Component{
-    weatherObj = new weatherService()
-    state = { 
+export default function WeatherIn ({city}){
+    const weatherObj = new weatherService()
+    const [state, setState] = useState({ 
         items: [],
         loading: true,
         error: false,
-        width: ''
-    }
+    })
+
+    const [width, setWidth] = useState('')
 
 
     // Просто для примера как выглядит погодный график
@@ -28,31 +29,35 @@ export default class WeatherIn extends Component{
     // ]
     
 
-    updateWeather() {
-        this.weatherObj.getWeather(this.props.city)
+    function updateWeather() {
+        weatherObj.getWeather(city)
             .then(res => {
-                this.setState({items: res, loading: false, width: window.innerWidth })
+                setState({items: res, loading: false })
                 console.log(res)
             }) 
-            .catch(err => this.setState({ loading: false,error: true }))     
+            .catch(err => setState({ loading: false,error: true }))     
     }
 
-    componentDidMount() {
-        this.updateWeather()
-    }
+    useEffect(() => { 
+        updateWeather()
+    }, [])
 
-    render () {
-        const {items, loading, error, width} = this.state
-        const spinner = loading ? <Loader/> : null
-        const errorMessage = error ? <Error /> : null
-        return (
-            <div className="weather">
-                {errorMessage}
-                {spinner}
-                {width > 1000 ? !spinner && <WeatherGraph data={items}/> : items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
-                {/* {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
-                {!spinner && <WeatherGraph data={items}/>} */}
-            </div>
-        )
-    } 
+    useEffect(() => { 
+        setWidth(window.innerWidth)
+    }, [window.innerWidth])
+
+    const {items, loading, error} = state
+    const spinner = loading ? <Loader/> : null
+    const errorMessage = error ? <Error /> : null
+   
+    return (
+        <div className="weather">
+            {errorMessage}
+            {spinner}
+            {width > 1000 ? !spinner && <WeatherGraph data={items}/> : items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
+            {/* {items.map((item, i) => <WeatherComp key={i} temp={item.temp} data={item.data}/>)}
+            {!spinner && <WeatherGraph data={items}/>} */}
+        </div>
+    )
+    
 }
