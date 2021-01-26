@@ -14,12 +14,12 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid">
-            <div className="navbar-header">
+    <nav className="navbar navbar-expand-sm navbar-right">
+        {/* <div className="container-fluid"> */}
+            {/* <div className="navbar-header">
                 <NavLink className="navbar-brand" to="/greenhouse"> LOGO </NavLink>
-            </div>
-            <ul className="nav navbar-nav navbar-right">
+            </div> */}
+            <ul className="nav navbar-nav">
                 <li>
                   <NavLink to='/userAccount'> {userName} </NavLink>
                 </li>
@@ -27,7 +27,7 @@ export const Navbar = () => {
                   <a href="/" onClick={logoutHandler}><span className="glyphicon glyphicon-log-in"></span> Выход </a>
                 </li>
             </ul>
-        </div>
+        {/* </div> */}
     </nav>
   )
 }

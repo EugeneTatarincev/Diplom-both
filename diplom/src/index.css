@@ -136,6 +136,7 @@ body {
 
 .main-flex {
   display: flex;
+  flex-wrap: wrap;
 }
 
 /* .card-img-top {

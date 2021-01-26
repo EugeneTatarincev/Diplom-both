@@ -12,7 +12,7 @@ export default function Greenhouse ({data}) {
         'co2': "CO2",
         'huma': "Влажность воздуха",
         'hums': "Влажность почвы",
-        'lit': "Освещение"
+        'light': "Освещение"
     }
 
     return (

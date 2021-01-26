@@ -25,7 +25,7 @@ router.post('/generate', auth, async (req, res) => {
 
       await sql.setData('cbtouser',[data, req.user.userId,], ['id_cb', 'id_user'])
   
-      res.status(201).json({ data })
+      res.status(201).json({ message:"Блок был удачно подключен" })
     } catch (e) {
       res.status(500).json({ message: e.message })
     }
@@ -75,7 +75,7 @@ router.post('/change', auth, async (req, res) => {
     const {data} = req.body
     console.log(data)
 
-    const {block, dataIn} = data
+    const {block, type, dataIn} = data
 
     // ВАЛИДАЦИЯ НА ПУСТЫЕ БЛОКИ
 
@@ -90,6 +90,37 @@ router.post('/change', auth, async (req, res) => {
     // ВАЛИДАЦИЯ НА ГРАНИЧНЫЕ ЗНАЧЕНИЯ
 
     // ОТПРАВКА В ТАБЛИЦУ ВМЕСТЕ С ТЕКУЩИМ ВРЕМЕНЕМ ОТПРАВКИ
+
+
+    // ПОЛУЧАЕМ ДАТУ И ВРЕМЯ
+
+    let date = new Date()
+    let dateFull = `${date.getHours()}${date.getMinutes()}${date.getDate()}0${date.getMonth() + 1}${date.getFullYear()}`
+    console.log(dateFull)
+
+    // ОТПРАВЛЯЕМ ДАННЫЕ В БД
+
+    let idControlTemp = await sql.anotherWay(block)
+    let {id_control} = idControlTemp[0]
+
+    console.log(id_control)
+
+    // ПРОВЕРЯЕМ ЕСТЬ ЛИ В ТАБЛИЦЕ ТАКОЙ КОНТРОЛЬ
+
+    let existing = await sql.getControlById(id_control)
+
+    if (existing.length) {
+      // ЕСЛИ ОН ЕСТЬ ТО Я АПДЕЙЧУ ДАННЫЕ И ВРЕМЯ ИХ ОТПРАВКИ
+
+      await sql.updateControlData(id_control, dataIn)
+      await sql.updateControlTime(id_control, dateFull)
+    }else{
+      // ЕСЛИ НЕТ ТО ИДЕТ ПОЛНЫЙ ЦИКЛ
+
+    await sql.setData('settingscontrol',[block, id_control, dataIn, dateFull], ['id_cb', 'id_control', 'data', 'datatimecurrent'])
+
+    }
+
 
     res.json(data)
   } catch (e) {

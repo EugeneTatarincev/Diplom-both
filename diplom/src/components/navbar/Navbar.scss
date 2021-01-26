@@ -2,6 +2,8 @@
 .navbar {
     background: linear-gradient(90deg, #0066FF 42.71%, #00D1FF 100%);
     padding: 15px;
+    display: flex;
+    justify-content: flex-end !important;
 
     li {
         margin-right: 50px;
@@ -18,5 +20,6 @@
             color: #0066FF;
         }
     }
+
 }
   

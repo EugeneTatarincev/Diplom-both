@@ -81,6 +81,38 @@ class SqlHandler {
         const res = await this.client.query(`SELECT id_sensor from cbtosensor WHERE id_cb = '${id}';`, [])
         return res.rows
     }
+
+    joinControlIdByType = async (type) => {
+        const res = await this.client.query(`SELECT cbtocontrol.id_control FROM cbtocontrol INNER JOIN control ON control.id=cbtocontrol.id_control  WHERE sensor.id = '${id}';`, [])
+        return res.rows
+    }
+
+    anotherWay = async (id_cb) => {
+        const res = await this.client.query(`SELECT cbtocontrol.id_control FROM cbtocontrol WHERE cbtocontrol.id_cb = '${id_cb}';`, [])
+        return res.rows
+    }
+
+    // CONTROL STUFF
+
+    isControlByBlock = async (blockId, controlId) => {
+        const res = await this.client.query(`SELECT id_control FROM settingscontrol WHERE id_cb = '${blockId}' AND id_control = '${controlId}';`)
+        return res.rows
+    }
+
+    getControlById = async (id) => {
+        const res = await this.client.query(`SELECT id_control FROM settingscontrol WHERE id_control = '${id}';`, [])
+        return res.rows
+    }
+
+    updateControlData = async (id, data) => {
+        const res = await this.client.query(`UPDATE settingscontrol SET data = ${data} WHERE id_control = '${id}';`)
+        return res.rows
+    }
+
+    updateControlTime = async (id, data) => {
+        const res = await this.client.query(`UPDATE settingscontrol SET datatimecurrent = ${data} WHERE id_control = '${id}';`)
+        return res.rows
+    }
 }
 
 module.exports = SqlHandler
